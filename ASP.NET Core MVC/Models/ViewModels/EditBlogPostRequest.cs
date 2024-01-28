@@ -1,6 +1,8 @@
-﻿namespace ASP.NET_Core_MVC.Models.Domain
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace ASP.NET_Core_MVC.Models.ViewModels
 {
-    public class BlogPost
+    public class EditBlogPostRequest
     {
         public Guid Id { get; set; }
         public String Heading { get; set; }
@@ -13,7 +15,10 @@
         public string Author { get; set; }
         public bool Visible { get; set; }
 
-        //Navigation Property
-        public ICollection<Tag> Tags { get; set; }
+        //display tags
+        public IEnumerable<SelectListItem> Tags { get; set; }
+
+        //collect tags
+        public string[] SelectedTags { get; set; } = Array.Empty<string>();
     }
 }

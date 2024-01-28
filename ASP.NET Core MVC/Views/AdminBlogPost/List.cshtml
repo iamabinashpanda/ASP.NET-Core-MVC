@@ -1,0 +1,41 @@
+﻿@model List<ASP.NET_Core_MVC.Models.Domain.BlogPost>
+@{
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Show Blog Posts</h1>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>HEADING</td>
+                <td>Tags</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var blogPost in Model)
+            {
+                <tr>
+                    <td>@blogPost.Id</td>
+                    <td>@blogPost.Heading</td>
+                    <td>
+                        <div class="d-flex">
+                        @foreach (var tag in blogPost.Tags)
+                        {
+                        <span class="badge bg-secondary me-1">@tag.Name</span>
+                        }
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="AdminBlogPost" asp-action="Edit" asp-route-id="@blogPost.Id">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
